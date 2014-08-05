@@ -1,1 +1,13 @@
 / 4-helpers.slim
+html
+  head
+    title Slim helper example
+  body
+    / Define the helper. Usually this will be done in a separate file
+    / helper.rb
+    ruby:
+      def content_block(headline, &block)
+        "<h1>#{headline}</h1><div id='content'>#{yield}</div>"
+      end
+    = content_block 'Helper Example' do
+      p This content is passed to the helper

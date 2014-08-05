@@ -14,3 +14,23 @@ html
     #box
     javascript:
       document.getElementById('box').innerHTML = 'Hello from Javascript!';
+    h1 Ruby code
+    In general you should avoid login in templates. However
+    if you want to write longer ruby code blocks you can use the `ruby:` section.
+    ruby:
+      products = {
+        chair: {
+          name: 'Wooden chair',
+          price: 10,
+        },
+        table: {
+          name: 'Glass table',
+          price: 20
+        }
+      }
+    Now we print the products
+    .products
+      - products.each do |id, p|
+        .product id=id
+          .name  = p[:name]
+          .price = p[:price]
