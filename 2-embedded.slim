@@ -1,0 +1,16 @@
+/ 2-embedded.slim
+doctype html
+html
+  head
+    title Embedded engine example
+  body
+    h1 Markdown
+    p
+      markdown:
+        * Link in Markdown: [Slim](http://slim-lang.com)
+        * Slim code interpolation
+          * Generated at #{Time.now.strftime("%Y-%m-%d %H:%M")}
+    h1 Javascript
+    #box
+    javascript:
+      document.getElementById('box').innerHTML = 'Hello from Javascript!';

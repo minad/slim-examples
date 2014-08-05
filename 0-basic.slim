@@ -1,0 +1,23 @@
+/ 0-basic.slim
+doctype html
+html
+  head
+    title Basic example
+  body
+    h1 Text blocks
+    p
+      | This is a text block
+        with multiple lines
+    p You can also write a text block
+      directly as tag content.
+    h1 Interpolation
+    p Generated at #{Time.now.strftime("%Y-%m-%d %H:%M")}
+    p style="position: absolute; top: #{rand(200)}px; left: #{rand(200)}px" Div at random position
+    h1 Ruby control structurs
+    - if rand(2) == 0
+      | First content
+    - else
+      | Second content
+    ul
+      - [1,2,3].each do |i|
+        li id="item#{i}" Item #{i}

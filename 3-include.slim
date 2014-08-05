@@ -1,0 +1,7 @@
+/ 3-include.slim
+doctype html
+html
+  head: include 3-include/header
+  body
+    - date = Time.now.strftime("%Y-%m-%d %H:%M")
+    include 3-include/content
