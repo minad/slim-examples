@@ -1,29 +1,47 @@
 # 6-pinboard.rb
 require 'sinatra'
-require 'moneta'
+require 'slim'
+require 'rack/moneta_store'
 
 use Rack::MonetaStore, :File, dir: 'pinboard-store'
 
 get '/' do
+  store = env['rack.moneta_store']
+  n = store.increment('post', 0)
+  @posts = ((n-10)..n).map {|i| store[i] }.compact.reverse
   slim :index
 end
 
 post '/' do
-  slim :index
+  store = env['rack.moneta_store']
+  n = store.increment('post')
+  store.delete(n - 10) if n > 10
+  store[n] = {name: params[:name], text: params[:text]}
+  redirect '/'
 end
 
 __END__
 
 @@ layout
+doctype html
 html
-  = yield
+  head
+  body
+    .content == yield
 
 @@ index
-
+h1 Pinboard
+.posts
+  - @posts.each do |post|
+    h2=post[:name]
+    p= post[:text]
+.form
   form method='post'
     fieldset
-      label for='name'
-      input name='name'
-      label for='post'
-      textarea name='post'
-      input type='submit'
+      p
+        label for='name' Name:
+        input name='name' autofocus=true
+      p
+        label for='text' Text:
+        textarea name='text'
+      p: input type='submit'

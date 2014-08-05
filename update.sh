@@ -15,7 +15,3 @@ done
 i=$(echo *gist.rb)
 echo "$i -> ${i/slim/html}"
 bundle exec ruby $i > output/${i/rb/html}
-echo ===================================================
-echo Starting pinboard
-echo ===================================================
-bundle exec ruby *pinboard.rb
