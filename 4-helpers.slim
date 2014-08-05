@@ -9,5 +9,5 @@ html
       def content_block(headline, &block)
         "<h1>#{headline}</h1><div id='content'>#{yield}</div>"
       end
-    = content_block 'Helper Example' do
+    == content_block 'Helper Example' do
       p This content is passed to the helper
