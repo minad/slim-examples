@@ -9,7 +9,8 @@ class Gist < Slim::Filter
     # but this shows also the structure of the underlying S-expressions used by Slim.
     [:html, :tag, 'script',
      [:html, :attrs,
-      [:html, :attr, 'src', [:static, "http://gist.github.com/#{content[3][1][2]}.js"]]]]
+      [:html, :attr, 'src', [:static, "http://gist.github.com/#{content[3][1][2]}.js"]]],
+     [:multi]]
   end
 end
 

@@ -10,7 +10,7 @@ echo ===================================================
 mkdir -p output
 for i in *.slim; do
         echo "$i -> ${i/slim/html}"
-        bundle exec slimrb -p $i > output/${i/slim/html}
+        bundle exec slimrb --trace -r slim/include -p $i > output/${i/slim/html}
 done
 i=$(echo *gist.rb)
 echo "$i -> ${i/slim/html}"
